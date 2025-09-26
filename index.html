@@ -17,13 +17,30 @@
 }
 
 /* Responsive - Mobile */
-@media (max-width: 768px) {
-  header {
-    padding: 0.5rem 1rem;       /* lebih tipis */
-    flex-direction: row;        /* tetap sejajar kiri-kanan */
-    justify-content: space-between;
-  }
+.header-btn {
+  background: linear-gradient(135deg, #f6d68c, #d4af37);
+  color: #fff8dc;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  margin-left: 1rem;
+  transition: all 0.3s ease;
+}
+.header-btn:hover {
+  background: #c9a80c;
+  transform: translateY(-2px);
+}
 
+/* Responsif: di hp tombol tetap kecil & sejajar */
+@media (max-width: 768px) {
+  .header-btn {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+    margin-left: auto; /* dorong ke kanan */
+  }
+}
   .logo {
     height: 50px;               /* kecilkan logo */
   }
@@ -561,6 +578,7 @@ header h1 {
     <a href="#purchase">Beli</a>
     <a href="#contact">Kontak</a>
   </nav>
+    <a href="#purchase" class="header-btn">Pesan</a>
 </header>
 
   <section class="hero" aria-label="Perkenalan Produk MIS-QALL LAMP">
@@ -814,4 +832,5 @@ hamburger.addEventListener("click", () => {
   </script>
 </body>
 </html>
+
 
