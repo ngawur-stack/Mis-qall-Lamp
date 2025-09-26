@@ -6,44 +6,64 @@
   <title></title>
   <style>
     /* Hamburger Menu */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  gap: 5px;
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
 }
-.hamburger span {
-  width: 25px;
-  height: 3px;
-  background: #f6c606;
-  border-radius: 3px;
-  transition: all 0.3s ease;
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
 }
 
 /* Responsive - Mobile */
 @media (max-width: 768px) {
+  header {
+    padding: 0.5rem 1rem;       /* lebih tipis */
+    flex-direction: row;        /* tetap sejajar kiri-kanan */
+    justify-content: space-between;
+  }
+
+  .logo {
+    height: 50px;               /* kecilkan logo */
+  }
+
+  header h1 {
+    font-size: 1.2rem;          /* perkecil judul */
+    letter-spacing: 1px;
+  }
+
   nav {
     display: none;
     flex-direction: column;
-    width: 100%;
+    width: 70%;                 /* sidebar lebar 70% */
+    max-width: 280px;
     background: #181313;
-    padding: 1rem;
-    position: absolute;
-    top: 100%;
-    left: 0;
+    padding: 2rem 1rem;
+    position: fixed;
+    top: 0;
+    left: -100%;                /* sembunyi di kiri */
+    height: 100%;
+    transition: left 0.3s ease; /* animasi geser */
+    z-index: 2000;
   }
   nav.active {
-    display: flex;
+    left: 0;                    /* muncul dari kiri */
   }
-  .hamburger {
-    display: flex;
-  }
-  .hero h2 {
-    font-size: 2rem;
-  }
-  .hero p {
+
+  nav a {
     font-size: 1rem;
+    padding: 0.75rem 0;
   }
+
+  .hero h2 {
+    font-size: 1.8rem;          /* lebih kecil di hp */
+  }
+
+  .hero p {
+    font-size: 0.9rem;          /* lebih kecil deskripsi */
+  }
+}
   .gallery {
     flex-direction: column;
     align-items: center;
@@ -789,6 +809,7 @@ const navMenu = document.getElementById("nav-menu");
 
 hamburger.addEventListener("click", () => {
   navMenu.classList.toggle("active");
+  hamburger.classList.toggle("active"); // supaya hamburger berubah jadi X
 });
   </script>
 </body>
